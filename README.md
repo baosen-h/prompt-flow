@@ -36,16 +36,17 @@ The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere
     <td align="center"><sub>Pick a flow and send the first step into Codex.</sub></td>
     <td align="center"><sub>Continue the flow after Claude Code finishes each answer.</sub></td>
   </tr>
-  <tr>
-    <th align="center" colspan="2">Settings</th>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><img src="image/setting-english.png" alt="prompt-flow settings" width="560" /></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><sub>Manage prompts, categories, flows, language, theme, and hooks.</sub></td>
-  </tr>
 </table>
+
+## Settings
+
+<p align="center">
+  <img src="image/setting-english.png" alt="prompt-flow settings" width="420" />
+</p>
+
+<p align="center">
+  <sub>Manage prompts, categories, flows, language, theme, and hooks.</sub>
+</p>
 
 ## Usage
 

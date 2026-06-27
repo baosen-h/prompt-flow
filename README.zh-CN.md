@@ -36,16 +36,17 @@
     <td align="center"><sub>选择一个 Flow，把第一步发送到 Codex。</sub></td>
     <td align="center"><sub>Claude Code 每次回答结束后，继续发送下一步。</sub></td>
   </tr>
-  <tr>
-    <th align="center" colspan="2">设置页</th>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><img src="image/setting-chinese.png" alt="prompt-flow 中文设置页" width="560" /></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><sub>管理提示词、分类、工作流、语言、主题和 hook。</sub></td>
-  </tr>
 </table>
+
+## 设置页
+
+<p align="center">
+  <img src="image/setting-chinese.png" alt="prompt-flow 中文设置页" width="420" />
+</p>
+
+<p align="center">
+  <sub>管理提示词、分类、工作流、语言、主题和 hook。</sub>
+</p>
 
 ## 使用方法
 
