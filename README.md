@@ -46,8 +46,8 @@ The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere
     <th align="center">Dark</th>
   </tr>
   <tr>
-    <td><img src="image/pciker-light.png" alt="prompt-flow light picker" width="100%" /></td>
-    <td><img src="image/picker-dark.png" alt="prompt-flow dark picker" width="100%" /></td>
+    <td align="center"><img src="image/pciker-light.png" alt="prompt-flow light picker" width="360" /></td>
+    <td align="center"><img src="image/picker-dark.png" alt="prompt-flow dark picker" width="360" /></td>
   </tr>
   <tr>
     <td align="center" colspan="2"><sub>Search prompts and flows, switch modes with Tab, then press Enter.</sub></td>
