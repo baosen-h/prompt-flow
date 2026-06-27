@@ -17,10 +17,6 @@
 
 `prompt-flow` is a tiny prompt picker and prompt workflow tool for Codex and Claude Code.
 
-Press `Ctrl + Alt + P`, search your prompt or flow, then insert it into the focused CLI. A flow sends prompts one by one, so repeated multi-step work can become a simple sequence.
-
-The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere without breaking your current work.
-
 ## Demos
 
 <table>
@@ -31,10 +27,6 @@ The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere
   <tr>
     <td><img src="image/codex-flow.gif" alt="prompt-flow Codex workflow" width="100%" /></td>
     <td><img src="image/claude-flow.gif" alt="prompt-flow Claude Code workflow" width="100%" /></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>Pick a flow and send the first step into Codex.</sub></td>
-    <td align="center"><sub>Continue the flow after Claude Code finishes each answer.</sub></td>
   </tr>
 </table>
 

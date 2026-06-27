@@ -17,10 +17,6 @@
 
 `prompt-flow` 是一个轻量的提示词选择器，也可以把多个提示词按顺序组成工作流，用于 Codex 和 Claude Code。
 
-按下 `Ctrl + Alt + P`，搜索提示词或工作流，然后插入到当前 CLI。工作流会按顺序发送每一步提示词，适合把重复的多步骤任务变成一次选择。
-
-它的目标是做成一个轻量应用：启动快、选择快，可以在任何需要提示词的地方快速使用，不打断当前工作。
-
 ## 演示
 
 <table>
@@ -31,10 +27,6 @@
   <tr>
     <td><img src="image/codex-flow.gif" alt="prompt-flow Codex 工作流" width="100%" /></td>
     <td><img src="image/claude-flow.gif" alt="prompt-flow Claude Code 工作流" width="100%" /></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>选择一个 Flow，把第一步发送到 Codex。</sub></td>
-    <td align="center"><sub>Claude Code 每次回答结束后，继续发送下一步。</sub></td>
   </tr>
 </table>
 
