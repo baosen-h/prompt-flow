@@ -15,7 +15,7 @@
 
 ## 产品介绍
 
-`prompt-flow` 是一个很小的提示词选择器，也可以把多个提示词按顺序组成工作流，主要用于 Codex 和 Claude Code。
+`prompt-flow` 是一个轻量的提示词选择器，也可以把多个提示词按顺序组成工作流，主要用于 Codex 和 Claude Code。
 
 按下 `Ctrl + Alt + P`，搜索提示词或工作流，然后插入到当前 CLI。工作流会按顺序发送每一步提示词，适合把重复的多步骤任务变成一次选择。
 
@@ -38,15 +38,37 @@
   </tr>
 </table>
 
+## 选择器
+
+<table>
+  <tr>
+    <th align="center">浅色</th>
+    <th align="center">深色</th>
+  </tr>
+  <tr>
+    <td><img src="image/pciker-light.png" alt="prompt-flow 浅色选择器" width="100%" /></td>
+    <td><img src="image/picker-dark.png" alt="prompt-flow 深色选择器" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><sub>搜索 Prompt 和 Flow，按 Tab 切换模式，然后按 Enter。</sub></td>
+  </tr>
+</table>
+
 ## 设置页
 
-<p align="center">
-  <img src="image/setting-chinese.png" alt="prompt-flow 中文设置页" width="420" />
-</p>
-
-<p align="center">
-  <sub>管理提示词、分类、工作流、语言、主题和 hook。</sub>
-</p>
+<table>
+  <tr>
+    <th align="center">浅色</th>
+    <th align="center">深色</th>
+  </tr>
+  <tr>
+    <td><img src="image/setting-chinese.png" alt="prompt-flow 浅色中文设置页" width="100%" /></td>
+    <td><img src="image/setting-chinese-dark.png" alt="prompt-flow 深色中文设置页" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><sub>管理提示词、分类、工作流、语言、主题和 hook。</sub></td>
+  </tr>
+</table>
 
 ## 使用方法
 

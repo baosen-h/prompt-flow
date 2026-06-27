@@ -38,15 +38,37 @@ The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere
   </tr>
 </table>
 
+## Picker
+
+<table>
+  <tr>
+    <th align="center">Light</th>
+    <th align="center">Dark</th>
+  </tr>
+  <tr>
+    <td><img src="image/pciker-light.png" alt="prompt-flow light picker" width="100%" /></td>
+    <td><img src="image/picker-dark.png" alt="prompt-flow dark picker" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><sub>Search prompts and flows, switch modes with Tab, then press Enter.</sub></td>
+  </tr>
+</table>
+
 ## Settings
 
-<p align="center">
-  <img src="image/setting-english.png" alt="prompt-flow settings" width="420" />
-</p>
-
-<p align="center">
-  <sub>Manage prompts, categories, flows, language, theme, and hooks.</sub>
-</p>
+<table>
+  <tr>
+    <th align="center">Light</th>
+    <th align="center">Dark</th>
+  </tr>
+  <tr>
+    <td><img src="image/setting-english.png" alt="prompt-flow light settings" width="100%" /></td>
+    <td><img src="image/setting-english-dark.png" alt="prompt-flow dark settings" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><sub>Manage prompts, categories, flows, language, theme, and hooks.</sub></td>
+  </tr>
+</table>
 
 ## Usage
 
