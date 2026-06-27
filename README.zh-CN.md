@@ -40,7 +40,7 @@
     <th align="center" colspan="2">设置页</th>
   </tr>
   <tr>
-    <td colspan="2"><img src="image/setting-chinese.png" alt="prompt-flow 中文设置页" width="100%" /></td>
+    <td align="center" colspan="2"><img src="image/setting-chinese.png" alt="prompt-flow 中文设置页" width="560" /></td>
   </tr>
   <tr>
     <td align="center" colspan="2"><sub>管理提示词、分类、工作流、语言、主题和 hook。</sub></td>
@@ -67,7 +67,4 @@ npm run tauri:build
 
 ## 说明
 
-- Windows 优先。
-- 提示词数据保存在本地。
-- 自动工作流目前主要支持 Codex 和 Claude Code。
 - 网页文本框可以使用普通提示词插入，但网页不支持 Flow 模式。

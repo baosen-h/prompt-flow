@@ -40,7 +40,7 @@ The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere
     <th align="center" colspan="2">Settings</th>
   </tr>
   <tr>
-    <td colspan="2"><img src="image/setting-english.png" alt="prompt-flow settings" width="100%" /></td>
+    <td align="center" colspan="2"><img src="image/setting-english.png" alt="prompt-flow settings" width="560" /></td>
   </tr>
   <tr>
     <td align="center" colspan="2"><sub>Manage prompts, categories, flows, language, theme, and hooks.</sub></td>
@@ -67,7 +67,4 @@ npm run tauri:build
 
 ## Notes
 
-- Windows-first.
-- Prompt data is stored locally.
-- Auto flow currently targets Codex and Claude Code.
 - Web text boxes can use normal prompt insertion, but web does not support flow mode.
