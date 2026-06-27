@@ -21,15 +21,6 @@ Press `Ctrl + Alt + P`, search your prompt or flow, then insert it into the focu
 
 The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere without breaking your current work.
 
-## Highlights
-
-- Fast prompt picker for Codex and Claude Code.
-- One-shot prompt mode for common prompts.
-- Flow mode for step-by-step prompt sequences.
-- `Tab` switches between Prompt and Flow in the picker.
-- Small settings page for prompts, categories, and flows.
-- Windows tray app: click the app to open Settings, use the shortcut to open the picker.
-
 ## Demos
 
 <table>
