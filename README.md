@@ -1,53 +1,62 @@
-<div align="center">
-  <h1>prompt-flow</h1>
-  <p><strong>A tiny prompt picker and prompt workflow tool for Codex and Claude Code.</strong></p>
-</div>
-
 <p align="center">
-  <a href="https://github.com/baosen-h/prompt-flow/releases/latest">Download</a>
-  ·
-  <a href="#english">English</a>
-  ·
-  <a href="#中文">中文</a>
+  <img src="assets/prompt-flow-icon.png" alt="prompt-flow icon" width="140" />
 </p>
 
-<div align="center">
-  <img alt="prompt-flow in Codex" src="image/codex-flow.gif" width="720" />
-</div>
+<h1 align="center">prompt-flow</h1>
 
-## English
+<p align="center">
+  English · <a href="README.zh-CN.md">Simplified Chinese</a>
+</p>
 
-`prompt-flow` helps you reuse prompts in coding CLIs without leaving the keyboard.
+<p align="center">
+  <a href="https://github.com/baosen-h/prompt-flow/releases"><img src="https://img.shields.io/github/v/release/baosen-h/prompt-flow?style=flat" alt="GitHub release" /></a>
+  <a href="https://github.com/baosen-h/prompt-flow/releases"><img src="https://img.shields.io/github/downloads/baosen-h/prompt-flow/total?style=flat&color=blue" alt="GitHub downloads" /></a>
+</p>
 
-Press `Ctrl + Alt + P`, search your prompt or flow, then insert it into Codex or Claude Code. A flow sends prompts one by one, so you can turn repeated multi-step work into a simple sequence.
+## Product Introduction
 
-### Why
+`prompt-flow` is a tiny prompt picker and prompt workflow tool for Codex and Claude Code.
 
-- Fast prompt picker for Codex and Claude Code
-- One-shot prompt mode for common prompts
-- Flow mode for step-by-step prompt sequences
-- Small settings page for prompts, categories, and flows
-- Windows tray app: open settings by clicking the app, open picker by shortcut
+Press `Ctrl + Alt + P`, search your prompt or flow, then insert it into the focused CLI. A flow sends prompts one by one, so repeated multi-step work can become a simple sequence.
 
-### Codex Flow
+The goal is to keep it light: open fast, choose fast, and reuse prompts anywhere without breaking your current work.
 
-<div align="center">
-  <img alt="prompt-flow Codex workflow" src="image/codex-flow.gif" width="720" />
-</div>
+## Highlights
 
-### Claude Code Flow
+- Fast prompt picker for Codex and Claude Code.
+- One-shot prompt mode for common prompts.
+- Flow mode for step-by-step prompt sequences.
+- `Tab` switches between Prompt and Flow in the picker.
+- Small settings page for prompts, categories, and flows.
+- Windows tray app: click the app to open Settings, use the shortcut to open the picker.
 
-<div align="center">
-  <img alt="prompt-flow Claude Code workflow" src="image/claude-flow.gif" width="720" />
-</div>
+## Demos
 
-### Settings
+<table>
+  <tr>
+    <th align="center">Codex Flow</th>
+    <th align="center">Claude Code Flow</th>
+  </tr>
+  <tr>
+    <td><img src="image/codex-flow.gif" alt="prompt-flow Codex workflow" width="100%" /></td>
+    <td><img src="image/claude-flow.gif" alt="prompt-flow Claude Code workflow" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Pick a flow and send the first step into Codex.</sub></td>
+    <td align="center"><sub>Continue the flow after Claude Code finishes each answer.</sub></td>
+  </tr>
+  <tr>
+    <th align="center" colspan="2">Settings</th>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="image/setting-english.png" alt="prompt-flow settings" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><sub>Manage prompts, categories, flows, language, theme, and hooks.</sub></td>
+  </tr>
+</table>
 
-<div align="center">
-  <img alt="prompt-flow settings" src="image/setting-english.png" width="720" />
-</div>
-
-### Usage
+## Usage
 
 1. Download the Windows installer from [Releases](https://github.com/baosen-h/prompt-flow/releases/latest).
 2. Open `prompt-flow` to configure prompts and flows.
@@ -58,59 +67,16 @@ Press `Ctrl + Alt + P`, search your prompt or flow, then insert it into Codex or
 
 For flows, install the Codex and Claude hooks from the Flow settings page. Hooks let `prompt-flow` send the next step after the current answer finishes.
 
-### Build
+## Build
 
-```sh
+```bash
 npm install
 npm run tauri:build
 ```
 
-## 中文
+## Notes
 
-`prompt-flow` 是一个很小的提示词选择器，也可以把多个提示词按顺序组成工作流，主要用于 Codex 和 Claude Code。
-
-按下 `Ctrl + Alt + P`，搜索提示词或工作流，然后插入到当前 CLI。工作流会按顺序发送每一步提示词，适合把重复的多步骤任务变成一次选择。
-
-### 为什么做它
-
-- 给 Codex 和 Claude Code 用的快速提示词选择器
-- 普通提示词模式：选择一个提示词直接插入
-- 工作流模式：按顺序执行多个提示词
-- 简单设置页：管理提示词、分类和工作流
-- Windows 托盘应用：点击应用打开设置，快捷键打开选择器
-
-### Codex 工作流
-
-<div align="center">
-  <img alt="prompt-flow Codex 工作流" src="image/codex-flow.gif" width="720" />
-</div>
-
-### Claude Code 工作流
-
-<div align="center">
-  <img alt="prompt-flow Claude Code 工作流" src="image/claude-flow.gif" width="720" />
-</div>
-
-### 设置页
-
-<div align="center">
-  <img alt="prompt-flow 中文设置页" src="image/setting-chinese.png" width="720" />
-</div>
-
-### 使用方法
-
-1. 从 [Releases](https://github.com/baosen-h/prompt-flow/releases/latest) 下载 Windows 安装包。
-2. 打开 `prompt-flow`，配置提示词和工作流。
-3. 聚焦到 Codex 或 Claude Code。
-4. 按 `Ctrl + Alt + P`。
-5. 按 `Tab` 在 Prompt 和 Flow 之间切换。
-6. 搜索、选择，然后按 `Enter`。
-
-如果要使用工作流，请在 Flow 设置页安装 Codex 和 Claude hook。hook 的作用是：等当前回答结束后，再自动发送下一步提示词。
-
-### 构建
-
-```sh
-npm install
-npm run tauri:build
-```
+- Windows-first.
+- Prompt data is stored locally.
+- Auto flow currently targets Codex and Claude Code.
+- Web text boxes can use normal prompt insertion, but web does not support flow mode.
