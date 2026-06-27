@@ -38,38 +38,6 @@
   </tr>
 </table>
 
-## 选择器
-
-<table>
-  <tr>
-    <th align="center">浅色</th>
-    <th align="center">深色</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="image/pciker-light.png" alt="prompt-flow 浅色选择器" width="360" /></td>
-    <td align="center"><img src="image/picker-dark.png" alt="prompt-flow 深色选择器" width="360" /></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><sub>搜索 Prompt 和 Flow，按 Tab 切换模式，然后按 Enter。</sub></td>
-  </tr>
-</table>
-
-## 设置页
-
-<table>
-  <tr>
-    <th align="center">浅色</th>
-    <th align="center">深色</th>
-  </tr>
-  <tr>
-    <td><img src="image/setting-chinese.png" alt="prompt-flow 浅色中文设置页" width="100%" /></td>
-    <td><img src="image/setting-chinese-dark.png" alt="prompt-flow 深色中文设置页" width="100%" /></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2"><sub>管理提示词、分类、工作流、语言、主题和 hook。</sub></td>
-  </tr>
-</table>
-
 ## 使用方法
 
 1. 从 [Releases](https://github.com/baosen-h/prompt-flow/releases/latest) 下载 Windows 安装包。
