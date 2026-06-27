@@ -51,3 +51,7 @@ npm run tauri:build
 ## 说明
 
 - 网页文本框可以使用普通提示词插入，但网页不支持 Flow 模式。
+
+## 协议
+
+MIT License。见 [LICENSE](LICENSE)。

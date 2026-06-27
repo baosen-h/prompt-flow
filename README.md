@@ -51,3 +51,7 @@ npm run tauri:build
 ## Notes
 
 - Web text boxes can use normal prompt insertion, but web does not support flow mode.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
