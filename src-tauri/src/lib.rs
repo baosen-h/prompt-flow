@@ -68,6 +68,8 @@ struct FlowRunLaunch {
 struct FlowHookStatus {
     codex_installed: bool,
     claude_installed: bool,
+    codex_stale: bool,
+    claude_stale: bool,
     codex_config_path: String,
     claude_config_path: String,
     script_path: String,
@@ -403,8 +405,14 @@ fn config_contains_flow_hook(path: &Path) -> bool {
         return false;
     };
     let data = data.to_lowercase();
-    // Old installations may still contain the prototype hook name until the user reinstalls.
-    data.contains(HOOK_SCRIPT_NAME) || data.contains(&legacy_hook_script_name())
+    data.contains(HOOK_SCRIPT_NAME)
+}
+
+fn config_contains_legacy_flow_hook(path: &Path) -> bool {
+    let Ok(data) = fs::read_to_string(path) else {
+        return false;
+    };
+    data.to_lowercase().contains(&legacy_hook_script_name())
 }
 
 fn center_picker(window: &WebviewWindow) -> Result<(), String> {
@@ -462,9 +470,13 @@ fn flow_hook_status(app: AppHandle) -> Result<FlowHookStatus, String> {
     let state_dir = app_data_dir(&app)?;
     let codex_config_path = codex_hooks_path()?;
     let claude_config_path = claude_settings_path()?;
+    let codex_installed = config_contains_flow_hook(&codex_config_path);
+    let claude_installed = config_contains_flow_hook(&claude_config_path);
     Ok(FlowHookStatus {
-        codex_installed: config_contains_flow_hook(&codex_config_path),
-        claude_installed: config_contains_flow_hook(&claude_config_path),
+        codex_installed,
+        claude_installed,
+        codex_stale: !codex_installed && config_contains_legacy_flow_hook(&codex_config_path),
+        claude_stale: !claude_installed && config_contains_legacy_flow_hook(&claude_config_path),
         codex_config_path: codex_config_path.to_string_lossy().to_string(),
         claude_config_path: claude_config_path.to_string_lossy().to_string(),
         script_path: script_path.to_string_lossy().to_string(),
@@ -608,6 +620,18 @@ fn open_external_url(url: String) -> Result<(), String> {
 
 fn quit_app(app: &AppHandle) {
     app.exit(0);
+}
+
+fn focus_existing_settings_window(app: &AppHandle) {
+    let Some(window) = app.get_webview_window("main") else {
+        return;
+    };
+    let _ = window.unminimize();
+    let _ = center_settings(&window);
+    let _ = window.show();
+    let _ = center_settings(&window);
+    let _ = window.set_focus();
+    let _ = window.emit("settings-opened", ());
 }
 
 #[cfg(target_os = "windows")]
@@ -781,6 +805,9 @@ fn key_input(
 pub fn run() {
     tauri::Builder::default()
         .manage(AppState::default())
+        .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+            focus_existing_settings_window(app);
+        }))
         .setup(|app| {
             if cfg!(debug_assertions) {
                 app.handle().plugin(
@@ -810,11 +837,9 @@ pub fn run() {
                 }
             }
 
-            let show_item = MenuItemBuilder::with_id("show", "Open Picker").build(app)?;
             let settings_item = MenuItemBuilder::with_id("settings", "Settings").build(app)?;
             let quit_item = MenuItemBuilder::with_id("quit", "Quit").build(app)?;
             let tray_menu = MenuBuilder::new(app)
-                .item(&show_item)
                 .item(&settings_item)
                 .separator()
                 .item(&quit_item)
@@ -830,10 +855,6 @@ pub fn run() {
                 .menu(&tray_menu)
                 .show_menu_on_left_click(false)
                 .on_menu_event(|app, event| match event.id().as_ref() {
-                    "show" => {
-                        let state = app.state::<AppState>();
-                        let _ = show_picker(app.clone(), state);
-                    }
                     "settings" => {
                         let _ = show_settings(app.clone());
                     }
@@ -848,8 +869,7 @@ pub fn run() {
                     } = event
                     {
                         let app = tray.app_handle();
-                        let state = app.state::<AppState>();
-                        let _ = show_picker(app.clone(), state);
+                        let _ = show_settings(app.clone());
                     }
                 })
                 .build(app)?;

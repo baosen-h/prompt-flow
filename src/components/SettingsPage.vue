@@ -47,8 +47,11 @@ const labels = {
     autoFlowHelp: 'Enable once for accurate step-by-step flows.',
     enableCodex: 'Enable Codex',
     enableClaude: 'Enable Claude',
+    reinstallCodex: 'Reinstall Codex',
+    reinstallClaude: 'Reinstall Claude',
     codexEnabled: 'Codex Enabled',
     claudeEnabled: 'Claude Enabled',
+    staleHook: 'Stale hook found. Reinstall to use the current prompt-flow path.',
     addFlow: 'Add Flow',
     flowName: 'Flow name',
     addPromptStep: 'Add prompt step by category',
@@ -78,8 +81,11 @@ const labels = {
     autoFlowHelp: '启用一次即可准确执行多步流程。',
     enableCodex: '启用 Codex',
     enableClaude: '启用 Claude',
+    reinstallCodex: '重新安装 Codex',
+    reinstallClaude: '重新安装 Claude',
     codexEnabled: 'Codex 已启用',
     claudeEnabled: 'Claude 已启用',
+    staleHook: '发现旧 Hook。请重新安装以使用当前 prompt-flow 路径。',
     addFlow: '添加流程',
     flowName: '流程名',
     addPromptStep: '按分类添加提示词步骤',
@@ -151,6 +157,11 @@ const promptsByCategory = computed(() =>
 const flowStepPrompts = computed(() =>
   props.prompts.filter((prompt) => normalizeCategory(prompt.category) === flowStepCategory.value),
 )
+const hookHelpText = computed(() => {
+  if (props.hookMessage) return props.hookMessage
+  if (props.hookStatus?.codex_stale || props.hookStatus?.claude_stale) return text.value.staleHook
+  return text.value.autoFlowHelp
+})
 
 function normalizeCategory(category: string) {
   return category.trim() || DEFAULT_CATEGORY
@@ -298,6 +309,22 @@ function stepLabel(step: string) {
 function openMarket(url: string) {
   invoke('open_external_url', { url })
 }
+
+function hookButtonText(client: 'codex' | 'claude') {
+  if (client === 'codex') {
+    if (props.hookStatus?.codex_stale) return text.value.reinstallCodex
+    return props.hookStatus?.codex_installed ? text.value.codexEnabled : text.value.enableCodex
+  }
+  if (props.hookStatus?.claude_stale) return text.value.reinstallClaude
+  return props.hookStatus?.claude_installed ? text.value.claudeEnabled : text.value.enableClaude
+}
+
+function hookButtonVariant(client: 'codex' | 'claude') {
+  if (client === 'codex') {
+    return props.hookStatus?.codex_installed ? 'secondary' : 'default'
+  }
+  return props.hookStatus?.claude_installed ? 'secondary' : 'default'
+}
 </script>
 
 <template>
@@ -409,25 +436,24 @@ function openMarket(url: string) {
       <aside class="manager-list">
         <div class="hook-panel">
           <strong>{{ text.autoFlow }}</strong>
-          <span v-if="hookMessage">{{ hookMessage }}</span>
-          <span v-else>{{ text.autoFlowHelp }}</span>
+          <span>{{ hookHelpText }}</span>
           <Button
             type="button"
             size="sm"
-            :variant="hookStatus?.codex_installed ? 'secondary' : 'default'"
+            :variant="hookButtonVariant('codex')"
             @click="emit('installHook', 'codex')"
           >
             <PlugZap :size="14" />
-            {{ hookStatus?.codex_installed ? text.codexEnabled : text.enableCodex }}
+            {{ hookButtonText('codex') }}
           </Button>
           <Button
             type="button"
             size="sm"
-            :variant="hookStatus?.claude_installed ? 'secondary' : 'default'"
+            :variant="hookButtonVariant('claude')"
             @click="emit('installHook', 'claude')"
           >
             <PlugZap :size="14" />
-            {{ hookStatus?.claude_installed ? text.claudeEnabled : text.enableClaude }}
+            {{ hookButtonText('claude') }}
           </Button>
         </div>
         <Button variant="secondary" class="w-full boxed-action" @click="newFlow">

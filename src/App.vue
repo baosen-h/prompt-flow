@@ -14,7 +14,7 @@ type Language = 'en' | 'zh'
 
 const prompts = ref<PromptItem[]>([])
 const flows = ref<FlowItem[]>([])
-const view = ref<View>('picker')
+const view = ref<View>('settings')
 const settingsInitialTab = ref<SettingsTab>('prompts')
 const pickerRef = ref<InstanceType<typeof PromptPicker> | null>(null)
 const appWindow = getCurrentWindow()
@@ -75,8 +75,9 @@ async function insertFlow(flow: FlowItem) {
   pickerMessage.value = ''
 
   // Flows need Stop hooks because the app cannot know when Codex or Claude has finished answering.
-  if (!hasAutoFlowHook()) {
-    hookMessage.value = 'Enable Auto Flow first. Install both Codex and Claude Stop hooks from Flow settings.'
+  const hookProblem = flowHookProblem()
+  if (hookProblem) {
+    hookMessage.value = hookProblem
     openSettings('flows')
     return
   }
@@ -109,6 +110,17 @@ async function installHook(client: 'codex' | 'claude') {
 
 function hasAutoFlowHook() {
   return Boolean(hookStatus.value?.codex_installed && hookStatus.value?.claude_installed)
+}
+
+function flowHookProblem() {
+  if (!hookStatus.value) return 'Checking Auto Flow hooks. Open Flow settings and try again.'
+  if (hookStatus.value.codex_stale || hookStatus.value.claude_stale) {
+    return 'Auto Flow hook is stale. Reinstall Codex and Claude hooks from Flow settings.'
+  }
+  if (!hasAutoFlowHook()) {
+    return 'Enable Auto Flow first. Install both Codex and Claude hooks from Flow settings.'
+  }
+  return ''
 }
 
 function resolvePromptStep(step: string) {
@@ -197,11 +209,7 @@ async function openSettings(initialTab: SettingsTab = 'prompts') {
 }
 
 async function closeSettings() {
-  view.value = 'picker'
-  // Recenter on every return; Windows can keep the previous settings-window position.
-  await nextTick()
-  await sizeAndCenter(pickerSize)
-  nextTick(() => pickerRef.value?.focus())
+  await invoke('minimize_window')
 }
 
 function toggleTheme() {
@@ -213,7 +221,7 @@ function toggleLanguage() {
 }
 
 onMounted(async () => {
-  await sizeAndCenter(pickerSize)
+  await sizeAndCenter(settingsSize)
   await loadStore()
   await loadHookStatus()
   unlistenPickerOpened = await listen('picker-opened', async () => {
@@ -229,8 +237,6 @@ onMounted(async () => {
     await nextTick()
     await sizeAndCenter(settingsSize)
   })
-  await nextTick()
-  pickerRef.value?.focus()
 })
 
 onUnmounted(() => {

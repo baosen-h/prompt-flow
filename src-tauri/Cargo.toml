@@ -25,6 +25,7 @@ tauri = { version = "2.11.3", features = ["tray-icon", "image-ico", "image-png"]
 tauri-plugin-log = "2"
 arboard = "3.6.1"
 windows = { version = "0.61.3", features = ["Win32_Foundation", "Win32_Graphics_Gdi", "Win32_UI_WindowsAndMessaging", "Win32_UI_Input_KeyboardAndMouse"] }
+tauri-plugin-single-instance = "2"
 
 [target.'cfg(any(target_os = "macos", windows, target_os = "linux"))'.dependencies]
 tauri-plugin-global-shortcut = "2.3.2"

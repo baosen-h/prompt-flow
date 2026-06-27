@@ -24,6 +24,8 @@ export interface PromptStore {
 export interface FlowHookStatus {
   codex_installed: boolean
   claude_installed: boolean
+  codex_stale: boolean
+  claude_stale: boolean
   codex_config_path: string
   claude_config_path: string
   script_path: string
